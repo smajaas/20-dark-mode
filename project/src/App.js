@@ -11,7 +11,7 @@ const getStorageTheme = () => {
 };
 
 function App() {
-  const [theme, setTheme] = useState('light-theme');
+  const [theme, setTheme] = useState(getStorageTheme());
 
   const toggleTheme = () => {
     if (theme === 'light-theme') {
@@ -23,6 +23,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.className = theme;
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   return (
